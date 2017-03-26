@@ -4,8 +4,8 @@ import {
   AUTH_USER,
   UNAUTH_USER,
   AUTH_ERROR,
-  GET_USER,
-  CLEAR_USER
+  CLEAR_USER,
+  GET_INITIAL_USER_DATA
 } from './types';
 
 const URL = 'http://localhost:3000'; //node server
@@ -17,7 +17,7 @@ export function loginUser({ email, password }) {
         dispatch({ type: AUTH_USER }); //update state for authed user
         localStorage.setItem('token', res.data.token); //store token to localStorage
         return () => {
-          dispatch({ type: GET_USER, payload: res.data.user }); //cache user to store
+          dispatch({ type: GET_INITIAL_USER_DATA, payload: res.data.user }); //cache user to store
           const { firstName, lastName } = res.data.user;
           browserHistory.push(`/usr/${firstName}${lastName}`);
         };
@@ -42,7 +42,7 @@ export function signUpUser(newUser) {
         dispatch({ type: AUTH_USER }); //auth user in auth_reducer
         localStorage.setItem('token', res.data.token);
         return () => {
-          dispatch({ type: GET_USER, payload: res.data.user }); //cache user to store
+          dispatch({ type: GET_INITIAL_USER_DATA, payload: res.data.user }); //cache user to store
           const { firstName, lastName } = res.data.user;
           browserHistory.push(`/usr/${firstName}${lastName}`);
         };
