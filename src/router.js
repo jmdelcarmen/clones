@@ -6,6 +6,6 @@ import Auth from './auth/app';
 //All navigations happens here, import all components here
 export default (
     <Route path="/" component={App}>
-      <Route path="auth" component={Auth} />
+      <Route path="login" component={Auth} />
     </Route>
 );

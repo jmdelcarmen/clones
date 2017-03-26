@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import actions from '../../actions';
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
-    }
+      user: {
+        email: '',
+        password: ''
+      }
+    };
   }
   onUsernameChange = (e) => {
     e.preventDefault();
-    const username = e.target.value;
-    this.setState({ username });
-    console.log(username);
+    const email = e.target.value;
+    this.setState({ email });
   }
   onPasswordChange = (e) => {
     e.preventDefault();
@@ -22,7 +25,8 @@ export default class LoginForm extends Component {
   }
   onLogin = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    const newUser = this.state.user;
+    this.props.loginUser(this.state.user);
   }
   render() {
     return (
@@ -50,3 +54,4 @@ export default class LoginForm extends Component {
     );
   }
 }
+export default connect(null, actions)(LoginForm);
