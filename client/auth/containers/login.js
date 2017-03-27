@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
+import axios from 'axios';
 
 class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: {
-        email: '',
-        password: ''
-      }
+      email: '',
+      password: ''
     };
   }
   onUsernameChange = (e) => {
@@ -21,12 +20,12 @@ class LoginForm extends Component {
     e.preventDefault();
     const password = e.target.value;
     this.setState({ password });
-    console.log(password);
   }
   onLogin = (e) => {
     e.preventDefault();
-    const newUser = this.state.user;
-    this.props.loginUser(this.state.user);
+    const newUser = this.state;
+    this.props.loginUser(newUser);
+    console.log(newUser);
   }
   render() {
     return (
@@ -50,6 +49,7 @@ class LoginForm extends Component {
           </div>
           <button>Log In</button>
         </form>
+        <button
       </div>
     );
   }
