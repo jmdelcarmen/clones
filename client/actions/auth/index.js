@@ -3,9 +3,7 @@ import { browserHistory } from 'react-router';
 import {
   AUTH_USER,
   UNAUTH_USER,
-  AUTH_ERROR,
-  CLEAR_USER,
-  GET_INITIAL_USER_DATA
+  AUTH_ERROR
 } from './types';
 
 const URL = 'http://localhost:3000'; //node server
@@ -16,11 +14,8 @@ export function loginUser({ email, password }) {
       .then(res => {
         dispatch({ type: AUTH_USER }); //update state for authed user
         localStorage.setItem('token', res.data.token); //store token to localStorage
-        return () => {
-          dispatch({ type: GET_INITIAL_USER_DATA, payload: res.data.user }); //cache user to store
-          const { firstName, lastName } = res.data.user;
-          browserHistory.push(`/usr/${firstName}${lastName}`);
-        };
+        browserHistory.push('/user');
+        console.log(getState());
       })
       .catch(err => dispatch(handleAuthError(err)));
   };
@@ -29,23 +24,17 @@ export function logoutUser() {
   return dispatch => {
     localStorage.removeItem('token'); //clear token from localStorage
     dispatch({ type: UNAUTH_USER }); //update state for unauthed user
-    return () => {
-      dispatch({ type: CLEAR_USER });
-      browserHistory.push('/');
-    };
+    browserHistory.push('/login');
   };
 }
 export function signUpUser(newUser) {
-  return dispatch => {
+  return (dispatch, getState) => {
     axios.post(`${URL}/signup`, newUser)
       .then(res => {
-        dispatch({ type: AUTH_USER }); //auth user in auth_reducer
+        dispatch({ type: AUTH_USER }) //auth user in auth_reducer
         localStorage.setItem('token', res.data.token);
-        return () => {
-          dispatch({ type: GET_INITIAL_USER_DATA, payload: res.data.user }); //cache user to store
-          const { firstName, lastName } = res.data.user;
-          browserHistory.push(`/usr/${firstName}${lastName}`);
-        };
+        browserHistory.push('/user');
+        console.log(getState());
       })
       .catch(err => dispatch(handleAuthError(err)));
   };

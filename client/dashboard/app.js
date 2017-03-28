@@ -1,8 +1,8 @@
 import React from 'react';
-import SignUp from '../containers/signup';
+import Header from './components/header';
 
 export default () => (
   <div>
-    <SignUp />
+    <Header />
   </div>
 );

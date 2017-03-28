@@ -15,6 +15,14 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  firstName: String,
+  lastName: String,
+  sex: String,
+  birthday: {
+    month: String,
+    day: Number,
+    year: Number
+  },
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date }
 });
