@@ -14,8 +14,7 @@ export function loginUser({ email, password }) {
       .then(res => {
         dispatch({ type: AUTH_USER }); //update state for authed user
         localStorage.setItem('token', res.data.token); //store token to localStorage
-        browserHistory.push('/user');
-        console.log(getState());
+        browserHistory.push('/dashboard');
       })
       .catch(err => dispatch(handleAuthError(err)));
   };
@@ -28,13 +27,12 @@ export function logoutUser() {
   };
 }
 export function signUpUser(newUser) {
-  return (dispatch, getState) => {
+  return dispatch => {
     axios.post(`${URL}/signup`, newUser)
       .then(res => {
         dispatch({ type: AUTH_USER }) //auth user in auth_reducer
         localStorage.setItem('token', res.data.token);
-        browserHistory.push('/user');
-        console.log(getState());
+        browserHistory.push('/dashboard');
       })
       .catch(err => dispatch(handleAuthError(err)));
   };

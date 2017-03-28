@@ -23,9 +23,7 @@ class LoginForm extends Component {
   }
   onLogin = (e) => {
     e.preventDefault();
-    const newUser = this.state;
-    this.props.loginUser(newUser);
-    console.log(newUser);
+    this.props.loginUser(this.state);
   }
   render() {
     return (

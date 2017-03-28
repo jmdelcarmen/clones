@@ -7,11 +7,15 @@ import thunk from 'redux-thunk';
 
 import routes from './router';
 import reducers from './reducers';
-
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const token = localStorage.getItem('token');
+const store = applyMiddleware(thunk)(createStore)(reducers);
+if (token) {
+  store.dispatch({ type: 'AUTH_USER' });
+  browserHistory.push('/dashboard');
+}
 //App entry point
 render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <Router routes={routes} history={browserHistory}/>
   </Provider>,
   document.getElementById('app')
