@@ -5,11 +5,11 @@ import { browserHistory } from 'react-router';
 export default (ComposedComponent) => {
   class Authentication extends Component {
     componentWillMount() {
-      !this.props.authenticated ? browserHistory.push('/login') : null
+      !this.props.authenticated ? browserHistory.push('/') : null
     }
     componentWillUpdate(props) {
       //new props are passed to this method
-      !props.authenticated ? browserHistory.push('/login') : null
+      !props.authenticated ? browserHistory.push('/') : null
     }
     //authed
     render() {

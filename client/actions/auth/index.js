@@ -5,7 +5,6 @@ import {
   UNAUTH_USER,
   AUTH_ERROR
 } from './types';
-
 const URL = 'http://localhost:3000'; //node server
 
 export function loginUser({ email, password }) {
@@ -23,7 +22,7 @@ export function logoutUser() {
   return dispatch => {
     localStorage.removeItem('token'); //clear token from localStorage
     dispatch({ type: UNAUTH_USER }); //update state for unauthed user
-    browserHistory.push('/login');
+    browserHistory.push('/');
   };
 }
 export function signUpUser(newUser) {
@@ -38,8 +37,10 @@ export function signUpUser(newUser) {
   };
 }
 export function handleAuthError(err) {
-  return {
-    type: AUTH_ERROR,
-    errMessage: err
-  };
+  switch (err.response.status) {
+    case 401:
+      return { type: AUTH_ERROR, errMessage: 'The information you\'ve entered is incorrect. Forgot password?' };
+    default:
+      return { type: AUTH_ERROR, errMessage: 'Something went wrong' };
+  }
 }

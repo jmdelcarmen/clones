@@ -7,43 +7,35 @@ class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: ''
+      error: ''
     };
   }
-  onUsernameChange = (e) => {
-    e.preventDefault();
-    const email = e.target.value;
-    this.setState({ email });
-  }
-  onPasswordChange = (e) => {
-    e.preventDefault();
-    const password = e.target.value;
-    this.setState({ password });
+  componentWillMount() {
+    this.props.auth.error ? this.setState({
+      error: this.props.auth.error
+    }) : ''
   }
   onLogin = (e) => {
     e.preventDefault();
-    this.props.loginUser(this.state);
+    const user = {
+      email: this.refs.email.value,
+      password: this.refs.password.value
+    };
+    this.props.loginUser(user);
   }
   render() {
     return (
       <div>
         <form onSubmit={this.onLogin}>
-          <div>
+          <div className="form-group">
             <label>Email or Phone</label>
-            <input
-              name="email"
-              type="text"
-              onChange={this.onUsernameChange}
-              />
+            <input ref="email" type="text" />
           </div>
-          <div>
+          <div className="form-group">
             <label>Password</label>
-            <input
-            name="password"
-            type="password"
-            onChange={this.onPasswordChange}
+            <input ref="password" type="password"
             />
+            <a className="forgot-password">Forgot account?</a>
           </div>
           <button>Log In</button>
         </form>
@@ -51,4 +43,7 @@ class LoginForm extends Component {
     );
   }
 }
-export default connect(null, actions)(LoginForm);
+const mapStateToProps = (state) => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps, actions)(LoginForm);

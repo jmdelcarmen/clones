@@ -40,7 +40,9 @@ class SignUp extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="signup">
+        <h1>Create a New Account</h1>
+        <span>Its free and always will be</span>
         <form onSubmit={this.onSignUp}>
           <div className="form-group">
             <input ref="firstName" type="text" placeholder="First name" className="form-control"/>
@@ -51,9 +53,9 @@ class SignUp extends Component {
             <input ref="confirmEmail" type="text" placeholder="Re-enter email" className="form-control"/>
           </div>
           <div className="form-group">
-            <input ref="password" type="password" placeholder="New password" />
+            <input ref="password" type="password" placeholder="New password" className="form-control" />
           </div>
-          <div className="form-group">
+          <div className="form-group bday">
             <label>Birthday</label>
             <select ref="month" id="month">
               <option>Month</option>
@@ -68,7 +70,7 @@ class SignUp extends Component {
               <option>1995</option>
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group sex">
           <label>
             <input
               onChange={this.onChangeSex}
