@@ -26,7 +26,7 @@ export function logoutUser() {
   };
 }
 export function signUpUser(newUser) {
-  return dispatch => {
+  return (dispatch, getState) => {
     axios.post(`${URL}/signup`, newUser)
       .then(res => {
         dispatch({ type: AUTH_USER }) //auth user in auth_reducer
@@ -34,6 +34,7 @@ export function signUpUser(newUser) {
         browserHistory.push('/dashboard');
       })
       .catch(err => dispatch(handleAuthError(err)));
+      console.log(getState());
   };
 }
 export function handleAuthError(err) {

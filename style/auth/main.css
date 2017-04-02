@@ -2,6 +2,10 @@ a:active,
 a:hover {
   text-decoration: none !important;
 }
+.error {
+  color: red;
+  font-weight: 400;
+}
 .auth-header,
 .auth-header form {
   display: flex;
