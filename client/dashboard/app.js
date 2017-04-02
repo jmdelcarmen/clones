@@ -1,7 +1,9 @@
 import React from 'react';
-//This component is just a parent container for routing.
+import Header from './components/header';
+
 export default (props) => (
   <div>
+    <Header />
     {props.children}
   </div>
 );

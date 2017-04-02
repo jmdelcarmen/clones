@@ -15,14 +15,24 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  firstName: String,
+  lastName: String,
+  sex: String,
+  birthday: {
+    month: String,
+    day: Number,
+    year: Number
+  },
   created_at: { type: Date, default: Date.now() },
-  updated_at: { type: Date }
+  updated_at: { type: Date, default: Date.now() }
 });
 
 UserSchema.pre('save', function(next) {
   this.password = bcrypt.hashSync(this.password, 8);
-  console.log('Password hashed', this.password);
   next();
 });
 
 export default mongoose.model('User', UserSchema);
+
+
+

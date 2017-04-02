@@ -13,12 +13,13 @@ export function login(req, res, next) {
   res.json({ token: createToken(req.user) });
 }
 export function signUp(req, res, next) {
-  const { email, password } = req.body;
-  return !email || !password
+  const newUser = req.body;
+  return !newUser.email || !newUser.password
   ? res.status(422).send({ err: 'You must provide an email and password' })
-  : User.findOne({ email }, (err, user) => {
-    err ? next(err) : new User({ email, password })
-    .save((err, user) => {
+  : User.findOne({ email: newUser.email }, (err, user) => {
+    if (err) { return next(err, false); }
+    if (user) { return next(null, false); }
+    new User(newUser).save((err, user) => {
       err ? next(err) : res.json({ token: createToken(user) });
     });
   });

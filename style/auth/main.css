@@ -1,0 +1,213 @@
+a:active,
+a:hover {
+  text-decoration: none !important;
+}
+.error {
+  color: red;
+  font-weight: 400;
+}
+.auth-header,
+.auth-header form {
+  display: flex;
+  flex-flow: row;
+}
+.auth-header h1 {
+  align-self: flex-end;
+  padding-bottom: 4px;
+}
+.auth-header h1 a {
+  color: #fff !important;
+  height: 33px !important;
+  margin-left: 20px;
+  font-weight: 900;
+  margin-top: -5px;
+}
+.auth-header {
+  font-family: 'Helvetica', sans-serif;
+  background-color: #3b5998;
+  background-image: linear-gradient(#4e69a2, #3b5998 50%);
+  border-bottom: 1px solid #133783;
+  min-height: 50px !important;
+  justify-content: space-around;
+}
+.auth-header form {
+  padding-bottom: 10px;
+  justify-content: space-between;
+  position: relative;
+  padding-right: 20px;
+}
+.auth-header .form-group {
+  display: flex;
+  flex-flow: column;
+}
+.auth-header .form-group:nth-child(2) {
+  padding-left: 14px;
+}
+.auth-header .form-group label,
+.auth-header .form-group input,
+.auth-header form button,
+.auth-header .forgot-password {
+  font-size: 12px;
+}
+.auth-header .form-group label {
+  letter-spacing: .3px;
+  color: #fff;
+  text-align: left;
+  padding-left: 1px;
+  margin-top: 15px;
+  margin-bottom: 2px;
+}
+.auth-header .form-group input {
+  border: 1.5px solid #444;
+  padding: 3px;
+  width: 150px;
+  height: 24px;
+}
+.auth-header .form-group:last-child input {
+  font-size: 14px;
+}
+.auth-header form button {
+  align-self: center;
+  width: 49px !important;
+  height: 24px;
+  padding: 0;
+  font-weight: 400;
+  margin-top: 18px;
+  margin-left: 13px;
+  color: #fff;
+  background: #4267b2;
+  border: 1.3px solid rgba(0, 0, 0, 0.4);
+}
+.auth-header .forgot-password {
+  color: rgba(255, 255, 255, .5);
+  position: absolute;
+  bottom: 6.5px;
+  cursor: pointer;
+}
+.auth-header .forgot-password:hover {
+  color: rgba(255, 255, 255, .5);
+}
+/****************AUTH SECTION*****************/
+.auth-section {
+  background: #e9ebee;
+  padding: 20px 17%;
+  display: flex;
+  justify-content: space-between;
+}
+.auth-section .recent-login,
+.auth-section .signup {
+  display: inline-block;
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+  min-width: 400px;
+}
+.auth-section .recent-login {
+  color: #333;
+  text-align: center;
+}
+.auth-section .recent-login h1,
+.auth-section .signup h1 {
+  color: #333;
+  font-size: 2.1em !important;
+  font-weight: 700;
+}
+.auth-section .recent-login-img  {
+  cursor: pointer;
+  background-image: url('/client/imgs/profilepic.png');
+  background-position: center;
+  background-size: cover;
+  width: 138px;
+  height: 138px;
+  border-radius: 2px;
+  padding: 3px !important;
+  display: inline-block;
+  margin: 0 auto;
+  border: 5px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  margin-top: 3em;
+  margin-bottom: .5em;
+}
+.auth-section .recent-login p {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: .3px;
+}
+.auth-section .signup h1 {
+  margin-bottom: .1em;
+}
+.auth-section .signup h1 + span {
+  letter-spacing: .75px;
+  font-family: 'Sanchez', Helvetica, Arial, sans-serif !important;
+  font-size: 19px;
+}
+.auth-section .signup form {
+  margin-top: 1em;
+  padding: 10px 0;
+  display: flex;
+  flex-flow: column;
+}
+.auth-section .signup form .form-group {
+  margin: 0;
+}
+.auth-section .signup form input {
+  border-radius: 5px;
+  border: .5px solid rgba(0, 0, 0, 0.3) !important;
+  padding: 1px 10px !important;
+  height: 39px;
+  margin-bottom: 10px;
+}
+.auth-section .signup form input:focus {
+  border: 1.5px solid #3b5998 !important;
+}
+.auth-section .signup form .form-group:first-child {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+.auth-section .signup form .form-group:first-child input {
+  width: 49%;
+}
+.auth-section .signup form .bday label {
+  display: block;
+  font-size: 16px;
+}
+.auth-section .signup form .bday select {
+  font-size: 13px;
+  height: 30px;
+  padding: 5px;
+}
+.auth-section .signup form .sex label {
+  color: #1d2129;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 18px;
+  padding: 0 10px 0 3px;
+  width: 100px;
+  position: relative;
+  cursor: pointer;
+}
+.auth-section .signup form .sex label input {
+  margin-right: 7.5px;
+}
+.auth-section .signup form .sex label span {
+  display: inline-block;
+  position: absolute;
+  top: 10px;
+}
+.auth-section .signup form button {
+  width: 194px;
+  height: 39px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 1.13em;
+  color: #eee;
+  text-shadow: -.75px 1px .75px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(#67ae55, #578843);
+  background-color: #69a74e;
+  box-shadow: inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
+  border: 1px solid rgba(0, 0, 0, .5);
+}
+.auth-section .signup form button:hover {
+  opacity: .95;
+}
