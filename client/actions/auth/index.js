@@ -26,7 +26,7 @@ export function logoutUser() {
   };
 }
 export function signUpUser(newUser) {
-  return (dispatch, getState) => {
+  return dispatch => {
     axios.post(`${URL}/signup`, newUser)
       .then(res => {
         dispatch({ type: AUTH_USER }) //auth user in auth_reducer
@@ -34,7 +34,6 @@ export function signUpUser(newUser) {
         browserHistory.push('/dashboard');
       })
       .catch(err => dispatch(handleAuthError(err)));
-      console.log(getState());
   };
 }
 export function handleAuthError(err) {
@@ -42,6 +41,6 @@ export function handleAuthError(err) {
     case 401:
       return { type: AUTH_ERROR, errMessage: 'The information you\'ve entered is incorrect. Forgot password?' };
     default:
-      return { type: AUTH_ERROR, errMessage: 'Something went wrong' };
+      return { type: AUTH_ERROR, errMessage: 'Email already in use.' };
   }
 }

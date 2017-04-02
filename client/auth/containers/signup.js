@@ -5,9 +5,16 @@ import { DaysSelect, MonthsSelect, YearsSelect } from '../../util-components';
 
 class SignUp extends Component {
     onSignUp = (newUser) => {
-        this.props.signUpUser(newUser);
+        const { resetForm, signUpUser } = this.props;
+        signUpUser(newUser);
+        resetForm();
     }
-
+    renderSignUpError()  {
+        const { auth, submitFailed } = this.props;
+        return auth.error && submitFailed
+            ? <div className="error">{auth.error}</div>
+            : '';
+    }
   render() {
       const {
           fields: { firstName, lastName, email, confirmEmail, password, bmonth, bday, byear, sex },
@@ -18,6 +25,7 @@ class SignUp extends Component {
       <div className="signup">
         <h1>Create a New Account</h1>
         <span>Its free and always will be</span>
+          {this.renderSignUpError()}
         <form onSubmit={handleSubmit(this.onSignUp)}>
           <div className="form-group">
               {firstName.touched && firstName.error && <div className="error">{firstName.error}</div>}
@@ -83,10 +91,7 @@ const validate = (fields) => {
     return errors;
 };
 
-const mapStateToProps = (state) => ({
-    form: state.form,
-    auth: state.auth
-});
+const mapStateToProps = (state) => ({ form: state.form, auth: state.auth });
 export default reduxForm({
     form: 'signup',
     fields: [ 'firstName', 'lastName', 'email', 'confirmEmail', 'password', 'bmonth', 'bday', 'byear', 'sex' ],

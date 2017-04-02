@@ -2,6 +2,9 @@ a:active,
 a:hover {
   text-decoration: none !important;
 }
+.login-error {
+  color: #e67e22;
+}
 .error {
   color: red;
   font-weight: 400;

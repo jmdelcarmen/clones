@@ -1,20 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import axios from 'axios';
 
 class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: ''
-    };
-  }
-  componentWillMount() {
-    this.props.auth.error ? this.setState({
-      error: this.props.auth.error
-    }) : ''
-  }
   onLogin = (e) => {
     e.preventDefault();
     const user = {
@@ -33,12 +21,14 @@ class LoginForm extends Component {
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input ref="password" type="password"
-            />
-            <a className="forgot-password">Forgot account?</a>
+            <input ref="password" type="password" />
+            <a href="#" className="forgot-password">Forgot account?</a>
           </div>
           <button>Log In</button>
         </form>
+        <small className="login-error">
+            {this.props.auth.error ? `* ${this.props.auth.error}` : ''}
+        </small>
       </div>
     );
   }
