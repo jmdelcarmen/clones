@@ -7,5 +7,6 @@ export default () => (
   <div>
     <Header />
     <Section />
+    <Footer />
   </div>
 );

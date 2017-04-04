@@ -37,10 +37,15 @@ export function signUpUser(newUser) {
   };
 }
 export function handleAuthError(err) {
+  console.log(err.response.status);
   switch (err.response.status) {
     case 401:
       return { type: AUTH_ERROR, errMessage: 'The information you\'ve entered is incorrect. Forgot password?' };
-    default:
+    case 400:
+      return { type: AUTH_ERROR, errMessage: 'Please provide a valid email and password.' }
+    case 404:
       return { type: AUTH_ERROR, errMessage: 'Email already in use.' };
+    default:
+      return { type: AUTH_ERROR, errMessage: 'Something went wrong.' };
   }
 }
