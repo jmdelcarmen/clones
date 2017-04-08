@@ -28,9 +28,9 @@ const UserSchema = new Schema({
   },
   friends: [{ type: Schema.ObjectId, ref: 'User' }],
   posts: [{ type: Schema.ObjectId, ref: 'Post' }],
-  notifications: [{ type: Schema.ObjectId, ref: 'Notification' }],
+  notifs: [{ type: Schema.ObjectId, ref: 'Notif' }],
   groups: [{ type: Schema.ObjectId, ref: 'Group' }],
-  messages: [{ type: Schema.ObjectId, ref: 'Message' }]
+  convos: [{ type: Schema.ObjectId, ref: 'Convo' }],
 }, { timestamps: true });
 
 UserSchema.pre('save', function(next) {
