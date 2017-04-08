@@ -5,7 +5,18 @@ import { DaysSelect, MonthsSelect, YearsSelect } from '../../util-components';
 import TermsAndConditions from '../components/terms-and-conditions';
 
 class SignUp extends Component {
-  onSignUp = (newUser) => {
+  onSignUp = ({ firstName, lastName, email, confirmEmail, password, bmonth, bday, byear, sex }) => {
+    const newUser = {
+      email, password,
+      bio: {
+        firstName, lastName, sex,
+        birthday: {
+          month: bmonth,
+          day: bday,
+          year: byear
+        }
+      }
+    };
     const { resetForm, signUpUser, auth } = this.props;
     signUpUser(newUser);
   }

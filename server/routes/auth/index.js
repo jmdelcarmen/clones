@@ -1,4 +1,4 @@
-import User from '../../models/user';
+import { User } from '../../models';
 import jwt from 'jwt-simple';
 import passport from 'passport';
 import passportService from '../../services/passport';
