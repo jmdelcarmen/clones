@@ -11,6 +11,7 @@ class LoginForm extends Component {
     };
     this.props.loginUser(user);
   }
+  renderLoginError = () => (this.props.auth.error ? `* ${this.props.auth.error}` : '');
   render() {
     return (
       <div>
@@ -27,7 +28,7 @@ class LoginForm extends Component {
           <button>Log In</button>
         </form>
         <small className="login-error">
-            {this.props.auth.error ? `* ${this.props.auth.error}` : ''}
+          {this.renderLoginError()}
         </small>
       </div>
     );

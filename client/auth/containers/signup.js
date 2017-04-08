@@ -9,12 +9,6 @@ class SignUp extends Component {
     const { resetForm, signUpUser, auth } = this.props;
     signUpUser(newUser);
   }
-  renderSignUpError()  {
-    const { auth, submitFailed } = this.props;
-    return auth.error && submitFailed
-        ? <div className="error">{auth.error}</div>
-        : '';
-  }
   renderConfirmEmail() {
     const { email, confirmEmail } = this.props.fields;
     return !email.error && email.touched ? <input {...confirmEmail} type="email" placeholder="Re-enter email" className="form-control" /> : '';
@@ -28,7 +22,6 @@ class SignUp extends Component {
       <div className="signup">
         <h1>Create a New Account</h1>
         <span>Its free and always will be</span>
-          {this.renderSignUpError()}
         <form autoComplete="off" onSubmit={handleSubmit(this.onSignUp)}>
           <div className="form-group">
               {firstName.touched && firstName.error && <div className="error left">{firstName.error}</div>}
