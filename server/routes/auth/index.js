@@ -10,7 +10,8 @@ function createToken(user) {
   return jwt.encode({ sub: user._id, iat: timeStamp }, secret);
 }
 export function login(req, res, next) {
-  res.json({ token: createToken(req.user) });
+  const user = req.user;
+  res.json({ token: createToken(user), user });
 }
 export function signUp(req, res, next) {
   const newUser = req.body;
@@ -20,7 +21,7 @@ export function signUp(req, res, next) {
     if (err) { return next(err, false); }
     if (user) { return next(null, false); }
     new User(newUser).save((err, user) => {
-      err ? next(err) : res.json({ token: createToken(user) });
+      err ? next(err) : res.json({ token: createToken(user), user });
     });
   });
 }

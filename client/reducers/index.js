@@ -5,7 +5,8 @@ import user from './auth/user_reducer';
 
 const rootReducer = combineReducers({
   auth,
-  form
+  form,
+  user
 });
 
 export default rootReducer;
