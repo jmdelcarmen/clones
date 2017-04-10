@@ -16,7 +16,6 @@ class NewsFeed extends Component {
   }
 }
 // const mapStateToProps = state => ({
-//   newsFeed: state.newsFeed,
 //   user: state.user
 // });
 // export default connect(mapStateToProps, actions)(NewsFeed);

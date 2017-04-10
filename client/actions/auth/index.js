@@ -9,11 +9,6 @@ import {
 } from './types';
 const URL = 'http://localhost:3000'; //node server
 
-export function loadNewsFeed(user) {
-  return dispatch => {
-    //make api call for newsfeed based on user
-  };
-}
 export function loginUser({ email, password }) {
   return dispatch => {
     axios.post(`${URL}/login`, { email, password })

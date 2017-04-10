@@ -2,13 +2,21 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { compose, createStore, applyMiddleware } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist';
 import thunk from 'redux-thunk';
-
 import routes from './router';
 import reducers from './reducers';
 const token = localStorage.getItem('token');
-const store = applyMiddleware(thunk)(createStore)(reducers);
+const store = createStore(
+  reducers,
+  undefined,
+  compose(
+    applyMiddleware(thunk),
+    autoRehydrate()
+  )
+);
+persistStore(store);
 if (token) {
   store.dispatch({ type: 'AUTH_USER' });
   browserHistory.push('/dashboard');
