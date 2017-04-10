@@ -6,7 +6,7 @@ const postSchema = new Schema({
   body: String,
   likes: Number,
   snippet: String,
-  private: Boolean,
+  private: { type: Boolean, default: false },
   timeline: { type: Schema.ObjectId, ref: 'User' },
   comments: [{ type: Schema.ObjectId, ref: 'Comment' }]
 }, { timestamps: true });

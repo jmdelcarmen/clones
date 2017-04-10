@@ -5,24 +5,33 @@ import { connect } from 'react-redux';
 import PostList from './post-list';
 
 class PostForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      body: '',
+      snippet: '',
+      private: false
+    };
+  }
+  onCreatingPost = (e) => {
+    e.preventDefault();
+    const body = e.target.value;
+    this.setState({ body, snippet: body.slice(0, 101) });
+  }
   onSubmitPost = (e) => {
-    console.info('submitting a post');
+    e.preventDefault();
+    this.props.createPost(this.state);
   }
   render() {
     return (
         <div>
-          <form>
+          <form onSubmit={this.onSubmitPost}>
             <label>New Post</label>
-            <input type="text" />
+            <input onChange={this.onCreatingPost} type="text" />
             <button type="submit">Submit</button>
           </form>
         </div>
     );
   }
 }
-// const mapStateToProps = state => ({
-//   newsFeed: state.newsFeed,
-//   user: state.user
-// });
-// export default connect(mapStateToProps, actions)(PostForm);
 export default connect(null, actions)(PostForm);

@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 import PostItem from './post-item';
 
 class PostList extends Component {
-  renderPostList() {
-    return ['post1', 'post2', 'post3'].map(post => <PostItem key={post} post={post} />)
+  componentWillMount() {
+    this.props.fetchPosts();
   }
-
+  renderPostList() {
+    return this.props.newsfeed.map(post => <PostItem key={post._id} post={post} />)
+  }
   render() {
     return (
       <div>
@@ -20,9 +22,7 @@ class PostList extends Component {
     );
   }
 }
-// const mapStateToProps = state => ({
-//   newsFeed: state.newsFeed,
-//   user: state.user
-// });
-// export default connect(mapStateToProps, actions)(PostList);
-export default connect(null, actions)(PostList);
+const mapStateToProps = state => ({
+  newsfeed: state.newsfeed
+});
+export default connect(mapStateToProps, actions)(PostList);

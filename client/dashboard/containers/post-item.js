@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class PostItem extends Component {
   render() {
     return (
-      <li>{this.props.post}</li>
+      <li>{this.props.post.body}</li>
     );
   }
 }

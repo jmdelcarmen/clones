@@ -8,7 +8,7 @@ export default (state = {}, action) => {
     case SET_USER:
       return {...state, ...action.user};
     case CLEAR_USER:
-      return {  }
+      return {}
   }
   return state;
 }
