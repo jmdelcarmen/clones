@@ -1,0 +1,70 @@
+.dashboard-nav {
+  width: 100%;
+  height: 42px;
+  background: #3b5998;
+}
+.dashboard-nav > .nav-wrapper {
+  width: 70%;
+  margin: 0 15%;
+  height: 100%;
+}
+.fb-inverse-mini {
+  background: url('/client/imgs/fb-logo-inverse.jpg');
+  background-size: contain;
+  border-radius: 1px;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+.dashboard-nav > .nav-wrapper {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+}
+.dashboard-nav > .nav-wrapper form {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  width: 35%;
+}
+.dashboard-nav > .nav-wrapper form input {
+  font-size: 14px;
+  padding-left: 5px;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  margin-left: 10px;
+  height: 25px;
+}
+.dashboard-nav > .nav-wrapper .nav-list {
+  list-style: none;
+  width: 55%;
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.dashboard-nav > .nav-wrapper .nav-list li {
+  padding: 0 5px;
+  padding-top: 3px;
+  margin: 0 4px;
+  max-height: 35px;
+  max-width: 35px;
+  cursor: pointer;
+}
+.dashboard-nav > .nav-wrapper .nav-list li .fa {
+  font-size: 1.4em;
+  color: rgba(0, 0, 0, 0.8);
+}
+.dashboard-nav > .nav-wrapper .nav-list li:nth-child(4) {
+  padding-left: 15px;
+  margin-left: 10px;
+  border-left: 1px solid rgba(0, 0, 0, .1);
+}
+.dashboard-nav > .nav-wrapper .nav-list li:last-child {
+  margin: 0;
+  margin-bottom: 7.5px;
+  font-size: .85em !important;
+}

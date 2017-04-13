@@ -9,7 +9,7 @@ class PostList extends Component {
     this.props.fetchPosts();
   }
   renderPostList() {
-    return this.props.newsfeed.map(post => <PostItem key={post._id} post={post} />)
+    return this.props.newsfeed.map(post => <PostItem key={post._id} post={post} />);
   }
   render() {
     return (
