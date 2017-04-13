@@ -23,11 +23,9 @@ class TopNav extends Component {
             <li><i className="fa fa-sort-down"></i></li>
           </ul>
         </div>
-
       </div>
     );
   }
 }
 export default connect(null, actions)(TopNav);
-
 // <li><button onClick={this.onLogoutUser}>Logout</button></li>

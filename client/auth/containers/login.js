@@ -3,6 +3,17 @@ import { connect } from 'react-redux';
 import actions from '../../actions';
 
 class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: ''
+    };
+  }
+  componentWillMount() {
+    this.props.auth.error ? this.setState({
+      error: this.props.auth.error
+    }) : ''
+  }
   onLogin = (e) => {
     e.preventDefault();
     const user = {

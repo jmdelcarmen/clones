@@ -30,7 +30,7 @@ export function logoutUser() {
   };
 }
 export function signUpUser(newUser) {
-  return dispatch => {
+  return (dispatch, getState) => {
     axios.post(`${URL}/signup`, newUser)
       .then(res => {
         dispatch({ type: AUTH_USER }) //auth user in auth_reducer

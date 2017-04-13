@@ -10,3 +10,5 @@ export default () => (
     <LoginForm />
   </div>
 );
+
+// <img src="./client/imgs/facebook-logo-preview.png" alt="fb-logo-preview"/>
