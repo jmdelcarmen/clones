@@ -1,6 +1,6 @@
+import { User } from '../models';
 import passport from 'passport';
 import bcrypt from 'bcrypt';
-import User from '../models/user';
 import LocalStrategy from 'passport-local';
 import {
   Strategy as JwtStrategy,

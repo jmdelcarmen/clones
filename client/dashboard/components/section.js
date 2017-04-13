@@ -1,8 +1,8 @@
 import React from 'react';
-import TopNav from '../containers/topnav';
+import NewsFeed from '../containers/newsfeed';
 
 export default () => (
   <div>
-    <TopNav />
+    <NewsFeed />
   </div>
 );

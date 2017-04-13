@@ -2,9 +2,8 @@ a:active,
 a:hover {
   text-decoration: none !important;
 }
-.error {
-  color: red;
-  font-weight: 400;
+.login-error {
+  color: #e74c3c;
 }
 .auth-header,
 .auth-header form {
@@ -93,6 +92,26 @@ a:hover {
   padding: 20px 17%;
   display: flex;
   justify-content: space-between;
+}
+.auth-section .signup .form-group {
+  position: relative;
+}
+.auth-section .signup .error {
+  position: absolute;
+  background: #e74c3c;
+  color: #fff;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  top: 5px;
+  font-size: 13px;
+  font-weight: 500
+}
+.auth-section .signup .error.left {
+  left: -190px;
+}
+.auth-section .signup .error.right {
+  right: -185px;
 }
 .auth-section .recent-login,
 .auth-section .signup {
@@ -210,4 +229,46 @@ a:hover {
 }
 .auth-section .signup form button:hover {
   opacity: .95;
+}
+.auth-section .signup form small {
+  width: 316px;
+  font-size: 11px;
+  margin-bottom: 1.5em;
+}
+.auth-footer {
+  margin: 0 20%;
+  width: 60% !important;
+  padding-top: 10px;
+  font-size: 12.5px;
+}
+.auth-footer a {
+  color: #3b5998 !important;
+}
+.auth-footer a:hover {
+  text-decoration: underline !important;
+}
+.auth-footer hr {
+  margin: .75em 0 !important;
+}
+.auth-footer p:first-child {
+  padding-left: 1.1em;
+  margin-bottom: .4em;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+}
+.auth-footer p:first-child a {
+  margin: 0 10px;
+}
+.auth-footer .link-groups {
+  display: flex;
+  flex-flow: row wrap;
+}
+.auth-footer .link-group-item {
+  list-style: none;
+  padding-left: 2em;
+}
+.auth-footer .fake-copy {
+  color: #888;
+  padding-left: 1.1em;
 }

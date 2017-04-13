@@ -2,7 +2,8 @@
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import authRoutes from './routes/auth';
+import routes from './routes';
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/fakebook')
   .then(
     () => console.log('Successfully connected to Mongo'),
@@ -13,6 +14,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //APIS
-authRoutes(app);
+routes(app);
 
 export default app;

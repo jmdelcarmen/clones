@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
+const Schema = mongoose.Schema;
 
 const validateEmail = email => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-const UserSchema = mongoose.Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     trim: true,
@@ -15,17 +16,22 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  firstName: String,
-  lastName: String,
-  sex: String,
-  birthday: {
-    month: String,
-    day: Number,
-    year: Number
+  bio: {
+    firstName: String,
+    lastName: String,
+    sex: String,
+    birthday: {
+      month: String,
+      day: Number,
+      year: Number
+    }
   },
-  created_at: { type: Date, default: Date.now() },
-  updated_at: { type: Date, default: Date.now() }
-});
+  friends: [{ type: Schema.ObjectId, ref: 'User' }],
+  posts: [{ type: Schema.ObjectId, ref: 'Post' }],
+  notifs: [{ type: Schema.ObjectId, ref: 'Notif' }],
+  groups: [{ type: Schema.ObjectId, ref: 'Group' }],
+  convos: [{ type: Schema.ObjectId, ref: 'Convo' }],
+}, { timestamps: true });
 
 UserSchema.pre('save', function(next) {
   this.password = bcrypt.hashSync(this.password, 8);
@@ -33,6 +39,3 @@ UserSchema.pre('save', function(next) {
 });
 
 export default mongoose.model('User', UserSchema);
-
-
-

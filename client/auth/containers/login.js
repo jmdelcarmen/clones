@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../../actions';
-import axios from 'axios';
 
 class LoginForm extends Component {
   constructor(props) {
@@ -23,6 +22,7 @@ class LoginForm extends Component {
     };
     this.props.loginUser(user);
   }
+  renderLoginError = () => (this.props.auth.error ? `* ${this.props.auth.error}` : '');
   render() {
     return (
       <div>
@@ -33,12 +33,14 @@ class LoginForm extends Component {
           </div>
           <div className="form-group">
             <label>Password</label>
-            <input ref="password" type="password"
-            />
-            <a className="forgot-password">Forgot account?</a>
+            <input ref="password" type="password" />
+            <a href="#" className="forgot-password">Forgot account?</a>
           </div>
           <button>Log In</button>
         </form>
+        <small className="login-error">
+          {this.renderLoginError()}
+        </small>
       </div>
     );
   }
