@@ -18,14 +18,13 @@ class NewsFeed extends Component {
     return (
       <div className="newsfeed">
         <PostForm />
-        <PostList page={this.state.page} />
+        <PostList page={this.state.page} posts={this.props.newsfeed} />
         <button onClick={this.loadMorePosts}>Load more</button>
       </div>
     );
   }
 }
-// const mapStateToProps = state => ({
-//   user: state.user
-// });
-// export default connect(mapStateToProps, actions)(NewsFeed);
-export default connect(null, actions)(NewsFeed);
+const mapStateToProps = state => ({
+  newsfeed: state.newsfeed
+});
+export default connect(mapStateToProps, actions)(NewsFeed);

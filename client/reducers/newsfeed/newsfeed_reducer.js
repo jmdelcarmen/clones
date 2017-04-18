@@ -8,7 +8,7 @@ export default (state = [], action) => {
     case FETCH_POSTS:
       return action.posts;
     case CREATE_POST:
-      return [...state, action.post];
+      return [ action.post, ...state];
   }
   return state;
 }
