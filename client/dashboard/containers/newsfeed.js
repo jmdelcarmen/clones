@@ -14,12 +14,17 @@ class NewsFeed extends Component {
     const nextPage = this.state.page + 1;
     this.setState({ page: nextPage });
   }
+  renderLoadMoreBtn() {
+    return this.props.newsfeed.length > this.state.page * 10
+      ? <button onClick={this.loadMorePosts}>Load more</button>
+      : '';
+  }
   render() {
     return (
       <div className="newsfeed">
         <PostForm />
         <PostList page={this.state.page} posts={this.props.newsfeed} />
-        <button onClick={this.loadMorePosts}>Load more</button>
+        {this.renderLoadMoreBtn()}
       </div>
     );
   }
