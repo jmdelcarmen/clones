@@ -8,15 +8,15 @@ class PostList extends Component {
   componentWillMount() {
     this.props.fetchPosts();
   }
-  renderPostList() {
-    return this.props.newsfeed.map(post => <PostItem key={post._id} post={post} />);
+  renderPostList(page) {
+    return this.props.newsfeed.slice(0, 10 * page).map(post => <PostItem key={post._id} post={post} />);
   }
   render() {
     return (
       <div>
         <h1>Post List</h1>
         <ul>
-          {this.renderPostList()}
+          {this.renderPostList(this.props.page)}
         </ul>
       </div>
     );

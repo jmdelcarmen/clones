@@ -4,6 +4,9 @@ import {
   CREATE_POST,
   FETCH_POSTS
 } from './types';
+import {
+  SET_USER
+} from '../auth/types';
 
 const URL = 'http://localhost:3000'; //node server
 
@@ -13,6 +16,7 @@ export function createPost(post) {
       .then(
         res => {
           dispatch({ type: CREATE_POST, post: res.data.post });
+          dispatch({ type: SET_USER, user: res.data.user });
         },
         err => {
           console.log(err);

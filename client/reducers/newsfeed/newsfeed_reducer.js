@@ -6,7 +6,7 @@ import {
 export default (state = [], action) => {
   switch (action.type) {
     case FETCH_POSTS:
-      return [...state, ...action.posts];
+      return action.posts;
     case CREATE_POST:
       return [...state, action.post];
   }

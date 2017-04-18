@@ -6,11 +6,20 @@ import PostForm from './post-form';
 import PostList from './post-list';
 
 class NewsFeed extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { page: 1 };
+  }
+  loadMorePosts = () => {
+    const nextPage = this.state.page + 1;
+    this.setState({ page: nextPage });
+  }
   render() {
     return (
       <div className="newsfeed">
         <PostForm />
-        <PostList />
+        <PostList page={this.state.page} />
+        <button onClick={this.loadMorePosts}>Load more</button>
       </div>
     );
   }
