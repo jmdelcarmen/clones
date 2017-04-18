@@ -8,7 +8,8 @@ const postSchema = new Schema({
   snippet: String,
   private: { type: Boolean, default: false },
   timeline: { type: Schema.ObjectId, ref: 'User' },
-  comments: [{ type: Schema.ObjectId, ref: 'Comment' }]
+  comments: [{ type: Schema.ObjectId, ref: 'Comment' }],
+  tags: [{ type: Schema.ObjectId, ref: 'user'}]
 }, { timestamps: true });
 
 export default mongoose.model('Post', postSchema);

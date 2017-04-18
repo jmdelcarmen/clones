@@ -9,9 +9,4 @@ class PostItem extends Component {
     );
   }
 }
-// const mapStateToProps = state => ({
-//   newsFeed: state.newsFeed,
-//   user: state.user
-// });
-// export default connect(mapStateToProps, actions)(PostItem);
 export default connect(null, actions)(PostItem);
