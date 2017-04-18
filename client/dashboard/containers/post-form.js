@@ -21,17 +21,23 @@ class PostForm extends Component {
   onSubmitPost = (e) => {
     e.preventDefault();
     this.props.createPost(this.state);
+    const { newsfeed, user } = this.props;
+    this.setState({ body: '', snippet: '' });
   }
   render() {
     return (
         <div>
           <form onSubmit={this.onSubmitPost}>
             <label>New Post</label>
-            <input onChange={this.onCreatingPost} type="text" />
+            <input onChange={this.onCreatingPost} value={this.state.body} type="text" />
             <button type="submit">Submit</button>
           </form>
         </div>
     );
   }
 }
-export default connect(null, actions)(PostForm);
+const mapStateToProps = state => ({
+  newsfeed: state.newsfeed,
+  user: state.user
+});
+export default connect(mapStateToProps, actions)(PostForm);

@@ -10,10 +10,11 @@ export function createPost(req, res) {
   const savePost = new Post(post).save();
   savePost
   .then(newPost => {
-    User.findByIdAndUpdate(userId, { $push: { 'posts': newPost._id } }, { new: true } ).populate('posts')
-    .then(user => {
-      res.json({ post: newPost, user });
-    });
+    User.findByIdAndUpdate(userId, { $push: { 'posts': newPost._id } }, { new: true } )
+      .populate('posts', null, null, { sort: { createdAt: -1 } })
+      .then(user => {
+        res.json({ post: newPost, user });
+      });
   },
   err => {
     res.send(new Error('Failed to create post.'));
