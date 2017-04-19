@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import routes from './routes';
+import path from 'path';
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/fakebook')
   .then(

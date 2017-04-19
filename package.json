@@ -5,7 +5,9 @@
   "main": "index.js",
   "repository": "https://github.com/jmdelcarmen/clones",
   "scripts": {
-    "start": "concurrently --kill-others \"node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js\" \"nodemon server --exec babel-node\"",
+    "dev": "concurrently --kill-others \"node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js\" \"nodemon src/server --exec babel-node\"",
+    "start": "concurrently --kill-others \"webpack-dev-server\" \"node dist/server/index\"",
+    "prestart": "babel src -d dist --copy-files",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
   },
