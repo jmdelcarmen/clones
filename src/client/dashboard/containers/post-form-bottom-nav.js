@@ -8,9 +8,9 @@ const PostFormBottomNav = ({
   submitPost,
   isFormFocused
 }) => isFormFocused ?
-  <ul>
+  <ul className="post-form-bottom-nav">
     <li>
-      <p>Who should see this?</p>
+        <span>Who should see this?</span>
         <a onClick={setPublicVisibility}>Public</a>
         <a onClick={setFriendsOnlyVisibility}>Friends</a>
         <a onClick={setOnlyMeVisiblity}>Only me</a>

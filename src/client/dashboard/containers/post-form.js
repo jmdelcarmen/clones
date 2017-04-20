@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import PostList from './post-list';
 import PostFormTopNav from './post-form-top-nav';
 import PostFormBottomNav from './post-form-bottom-nav';
+import PostFormTextArea from './post-form-textarea';
 
 class PostForm extends Component {
   constructor(props) {
@@ -45,18 +46,22 @@ class PostForm extends Component {
   setFormUnFocused = () => this.setState({ active: false });
   render() {
     return (
-        <div>
-          <form onSubmit={this.onSubmitPost}>
+        <div className="post-form-wrapper">
+          <form className="post-form"onSubmit={this.onSubmitPost}>
             <PostFormTopNav
+              isFormFocused={this.state.active}
               setFormUnFocused={this.setFormUnFocused}
               setPostTypeText={this.setPostTypeText}
               setPostTypeVideo={this.setPostTypeVideo}
               setPostTypePhotos={this.setPostTypePhotos}/>
-            <textarea
-              onFocus={() => this.setState({ active: true })}
-              onChange={this.onCreatingPost}
-              value={this.state.body}>
-            </textarea>
+            <div className="post-body">
+              <div className="post-form-pic"></div>
+              <PostFormTextArea
+                onFocus={() => this.setState({ active: true })}
+                onChange={this.onCreatingPost}
+                value={this.state.body}/>
+            </div>
+            <hr></hr>
             <PostFormBottomNav
               isFormFocused={this.state.active}
               setOnlyMeVisiblity={this.setOnlyMeVisiblity}
