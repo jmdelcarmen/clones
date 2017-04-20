@@ -5,8 +5,9 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   body: String,
   likes: Number,
+  type: String,
   snippet: String,
-  private: { type: Boolean, default: false },
+  visibility: String,
   timeline: { type: Schema.ObjectId, ref: 'User' },
   comments: [{ type: Schema.ObjectId, ref: 'Comment' }],
   tags: [{ type: Schema.ObjectId, ref: 'user'}]

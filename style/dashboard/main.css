@@ -9,7 +9,7 @@
   height: 100%;
 }
 .fb-inverse-mini {
-  background: url('/client/imgs/fb-logo-inverse.jpg');
+  background: url('/src/client/imgs/fb-logo-inverse.jpg');
   background-size: contain;
   border-radius: 1px;
   display: inline-block;
