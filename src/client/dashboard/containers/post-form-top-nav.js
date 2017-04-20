@@ -5,18 +5,27 @@ const PostFormTopNav = ({
   setPostTypePhotos,
   setPostTypeVideo,
   setFormUnFocused,
-  isFormFocused
+  isFormFocused,
+  postType
 }) =>
   <ul className="post-form-top-nav">
-    <li onClick={setPostTypeText}>
+    <li
+      className={postType === 'text' ? 'active' : ''}
+      onClick={setPostTypeText}>
       <i className="fa fa-edit"></i>
-      Create a Post |
+      Create a Post
     </li>
-    <li onClick={setPostTypePhotos}>
+    |
+    <li
+      className={postType === 'photos' ? 'active' : ''}
+      onClick={setPostTypePhotos}>
       <i className="fa fa-image"></i>
-      Photo Album |
+      Photo Album
     </li>
-    <li onClick={setPostTypeVideo}>
+    |
+    <li
+      className={postType === 'video' ? 'active' : ''}
+      onClick={setPostTypeVideo}>
       <i className="fa fa-video-camera"></i>
       Video
     </li>
@@ -27,5 +36,5 @@ const renderExitForm = (isFormFocused, setFormUnFocused) => isFormFocused ?
   <li onClick={setFormUnFocused}>
     <i className="fa fa-times"></i>
   </li> : <div></div>
-  
+
 export default PostFormTopNav;

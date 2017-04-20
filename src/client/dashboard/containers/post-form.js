@@ -49,6 +49,7 @@ class PostForm extends Component {
         <div className="post-form-wrapper">
           <form className="post-form"onSubmit={this.onSubmitPost}>
             <PostFormTopNav
+              postType={this.state.type}
               isFormFocused={this.state.active}
               setFormUnFocused={this.setFormUnFocused}
               setPostTypeText={this.setPostTypeText}

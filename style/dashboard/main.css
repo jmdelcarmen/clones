@@ -100,6 +100,9 @@
 .post-form-top-nav li {
   padding: 5px;
 }
+.post-form-top-nav li.active {
+  background: #ddd;
+}
 .post-form-top-nav li i {
   margin-right: .3em;
 }
